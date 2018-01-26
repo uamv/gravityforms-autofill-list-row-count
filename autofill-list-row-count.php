@@ -72,7 +72,7 @@ function gf_autofill_list_row_count_notices() {
 		$typewheel_notices = array(
 			$prefix . '-give' => array(
 				'trigger' => true,
-				'time' => time() + 30,
+				'time' => time() + 604800,
 				'dismiss' => array( 'month' ),
 				// 'type' => 'success',
 				'content' => 'Is <strong>GF Autofill List Row Count</strong> working well for you? Please consider a <a href="https://typewheel.xyz/give/?ref=GF%20Autofill%20List%20Row%20Count" target="_blank">small donation</a> to encourage further development.',
