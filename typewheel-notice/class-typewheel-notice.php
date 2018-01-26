@@ -176,8 +176,10 @@ if ( ! class_exists( 'Typewheel_Notice' ) ) {
 			// Loop though the notices
 			foreach ( $this->notices as $notice => $args ) {
 
+				$cap = ( isset( $args['capability'] ) && '' != $args['capability'] ) ? $args['capability'] : 'read';
+
 				// Check that the notice is supposed to be displayed on this page and that it is active for the user
-				if ( in_array( $page, $args['location'] ) && $this->user['notices'][ $notice ]['trigger'] && $this->user['notices'][ $notice ]['time'] < time() ) {
+				if ( in_array( $page, $args['location'] ) && $this->user['notices'][ $notice ]['trigger'] && $this->user['notices'][ $notice ]['time'] < time() && current_user_can( $cap ) ) {
 					if ( is_array( $args['style'] ) ) {
 						$style = '';
 						foreach ( $args['style'] as $att => $value ) {
@@ -187,9 +189,9 @@ if ( ! class_exists( 'Typewheel_Notice' ) ) {
 
 					$html .= '<div id="' . $notice . '-typewheel-notice" class="notice notice-' . $args['type'] . ' typewheel-notice' . '" style="' . esc_attr( $style ) . '">';
 						$html .= '<p>';
+							$html .= $this->get_dismissals( $notice, $args['dismiss'] );
 							$html .= isset( $args['icon'] ) ? '<i class="dashicons dashicons-' . $args['icon'] . ' featured-icon"></i>' : '';
 							$html .= apply_filters( $notice . '_typewheel_notice_content', $args['content'], $notice );
-							$html .= $this->get_dismissals( $notice, $args['dismiss'] );
 						$html .= '</p>';
 					$html .= '</div>';
 
