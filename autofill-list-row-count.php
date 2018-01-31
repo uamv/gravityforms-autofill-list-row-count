@@ -67,7 +67,7 @@ if ( ! function_exists( 'gf_autofill_list_row_count_notices' ) && apply_filters(
 				// 'type' => 'success',
 				'content' => 'Is <strong>GF Autofill List Row Count</strong> working well for you? Please consider a <a href="https://typewheel.xyz/give/?ref=GF%20Autofill%20List%20Row%20Count" target="_blank">small donation</a> to encourage further development.',
 				'icon' => 'heart',
-				'style' => array( 'background-image' => 'linear-gradient( to bottom right, rgb(215, 215, 215), rgb(231, 211, 186) )', 'border-left' => '0' ),
+				'style' => array( 'background-image' => 'linear-gradient( to bottom right, rgb(215, 215, 215), rgb(231, 211, 186) )', 'border-left-color' => '#3F3F3F' ),
 				'location' => array( 'admin.php?page=gf_edit_forms', 'admin.php?page=gf_entries', 'admin.php?page=gf_settings', 'admin.php?page=gf_addons' ),
 			),
 		);
