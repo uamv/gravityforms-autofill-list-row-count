@@ -4,7 +4,7 @@
  * Plugin Name: Gravity Forms Autofill List Row Count
  * Plugin URI: https://typewheel.xyz/project/autofill-list-row-count
  * Description: Adds option for autofilling the number of rows in a list to another field within a Gravity Form.
- * Version: 1.0.beta2
+ * Version: 1.0.beta3
  * Author: Typewheel
  * Author URI: https://typewheel.xyz/
  * Typewheel Update ID: 3
@@ -17,7 +17,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-define( 'GF_AUTOFILL_LIST_ROW_COUNT_VERSION', '1.0.beta2' );
+define( 'GF_AUTOFILL_LIST_ROW_COUNT_VERSION', '1.0.beta3' );
 
 require_once( 'class-typewheel-updater.php' );
 require_once( 'typewheel-notice/class-typewheel-notice.php' );
@@ -46,27 +46,17 @@ function gf_autofill_list_row_count() {
 
 
 /**** DECLARE TYPEWHEEL NOTICES ****/
+if ( ! function_exists( 'gf_autofill_list_row_count_notices' ) && apply_filters( 'show_typewheel_notices', true ) ) {
 
-add_action( 'admin_notices', 'gf_autofill_list_row_count_notices' );
-/**
- * Displays a plugin notices
- *
- * @since    1.0
- */
-function gf_autofill_list_row_count_notices() {
+	add_action( 'admin_notices', 'gf_autofill_list_row_count_notices' );
+	/**
+	 * Displays a plugin notices
+	 *
+	 * @since    1.0
+	 */
+	function gf_autofill_list_row_count_notices() {
 
-	$prefix = str_replace( '-', '_', dirname( plugin_basename(__FILE__) ) );
-
-	if ( ! get_option( $prefix . '_activated' ) ) {
-
-	// 	// Notice to show on plugin activation
-	// 	$html = '<div class="updated">';
-	// 		$html .= '<p style="display: inline-block">';
-	// 			$html .= __( "<strong>Nice!</strong> We're up and running! Enjoy your experience with Gravity Forms: Custom Entry Limit.", 'typewheel' );
-	// 		$html .= '</p>';
-	// 	$html .= '</div><!-- /.updated -->';
-    //
-	// 	echo $html;
+		$prefix = str_replace( '-', '_', dirname( plugin_basename(__FILE__) ) );
 
 		// Define the notices
 		$typewheel_notices = array(
@@ -83,17 +73,11 @@ function gf_autofill_list_row_count_notices() {
 		);
 
 		// get the notice class
-		$notices = new Typewheel_Notice( $prefix, $typewheel_notices );
+		new Typewheel_Notice( $prefix, $typewheel_notices );
 
-		update_option( $prefix . '_activated', true );
+	} // end display_plugin_notices
 
-	} else {
-
-		$notices = new Typewheel_Notice( $prefix );
-
-	}
-
-} // end display_plugin_notices
+}
 
 /**
  * Deletes activation marker so it can be displayed when the plugin is reinstalled or reactivated
