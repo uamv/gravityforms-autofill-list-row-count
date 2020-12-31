@@ -9,7 +9,7 @@ class GFAutofillListRowCount extends GFAddOn {
 	protected $_slug = 'autofilllistrowcount';
 	protected $_path = 'gravityforms-autofill-list-row-count/autofill-list-row-count.php';
 	protected $_full_path = __FILE__;
-	protected $_title = 'Typewheel: Gravity Forms Autofill List Row Count';
+	protected $_title = 'Gravity Forms Autofill List Row Count';
 	protected $_short_title = 'Autofill List Row Count';
 
 	private static $_instance = null;
